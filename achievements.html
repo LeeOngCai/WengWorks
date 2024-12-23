@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成就 - 翁才恩的个人网站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .menu-hidden { display: none; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-gray-800 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-xl font-bold">翁才恩的个人网站</a>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menuButton" class="md:hidden p-2">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+
+                <!-- 桌面端导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-blue-400 transition-colors">首页</a>
+                    <a href="resume.html" class="hover:text-blue-400 transition-colors">简历</a>
+                    <a href="achievements.html" class="hover:text-blue-400 transition-colors">成就</a>
+                    <a href="projects.html" class="hover:text-blue-400 transition-colors">项目</a>
+                    <a href="github.html" class="hover:text-blue-400 transition-colors">GitHub</a>
+                </div>
+            </div>
+
+            <!-- 移动端导航菜单 -->
+            <div id="mobileMenu" class="menu-hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">首页</a>
+                    <a href="resume.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">简历</a>
+                    <a href="achievements.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">成就</a>
+                    <a href="projects.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">项目</a>
+                    <a href="github.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold mb-8 text-center">学术成就</h1>
+
+            <!-- 论文发表 -->
+            <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">论文发表</h2>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-blue-400 pl-4 hover:bg-gray-700 transition-colors duration-200 rounded-r-lg cursor-pointer">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1579547944212-c4f4961a8dd8" 
+                                     alt="激光雷达点云增强" 
+                                     class="rounded-lg w-full h-48 object-cover hover:opacity-80 transition-opacity">
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-xl font-semibold">基于深度学习的激光雷达点云增强方法研究</h3>
+                                <p class="text-gray-400 mt-2">发表于《IEEE Transactions on Intelligent Transportation Systems》</p>
+                                <p class="text-gray-400">2023年 | 第一作者</p>
+                                <p class="text-gray-400 mt-2">提出了一种新的点云增强算法，显著提升了低分辨率激光雷达的点云质量。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-l-4 border-blue-400 pl-4 hover:bg-gray-700 transition-colors duration-200 rounded-r-lg cursor-pointer">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1607893378714-007fd47c8719" 
+                                     alt="多传感器融合" 
+                                     class="rounded-lg w-full h-48 object-cover hover:opacity-80 transition-opacity">
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-xl font-semibold">多传感器融合的3D目标检测方法</h3>
+                                <p class="text-gray-400 mt-2">发表于ITSC 2023国际会议</p>
+                                <p class="text-gray-400">2023年 | 第一作者</p>
+                                <p class="text-gray-400 mt-2">提出了一种结合4D毫米波雷达、激光雷达和视觉的多模态融合框架。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 专利 -->
+            <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">专利成果</h2>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-green-400 pl-4 hover:bg-gray-700 transition-colors duration-200 rounded-r-lg cursor-pointer">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb" 
+                                     alt="传感器系统" 
+                                     class="rounded-lg w-full h-48 object-cover hover:opacity-80 transition-opacity">
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-xl font-semibold">一种基于多传感器融合的智能交通感知系统</h3>
+                                <p class="text-gray-400">专利号：CN123456789</p>
+                                <p class="text-gray-400">授权时间：2022年</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 获奖情况 -->
+            <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">获奖情况</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-colors duration-200 cursor-pointer">
+                        <h3 class="text-xl font-semibold">国家奖学金</h3>
+                        <p class="text-gray-400">2023年度</p>
+                        <p class="text-gray-400">教育部颁发</p>
+                    </div>
+
+                    <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-colors duration-200 cursor-pointer">
+                        <h3 class="text-xl font-semibold">优秀博士生</h3>
+                        <p class="text-gray-400">2022年度</p>
+                        <p class="text-gray-400">同济大学</p>
+                    </div>
+
+                    <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-colors duration-200 cursor-pointer">
+                        <h3 class="text-xl font-semibold">最佳论文奖</h3>
+                        <p class="text-gray-400">2023年</p>
+                        <p class="text-gray-400">ITSC国际会议</p>
+                    </div>
+
+                    <div class="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-colors duration-200 cursor-pointer">
+                        <h3 class="text-xl font-semibold">学术创新奖</h3>
+                        <p class="text-gray-400">2022年</p>
+                        <p class="text-gray-400">同济大学交通运输工程学院</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 学术活动 -->
+            <section class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">学术活动</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold">国际学术会议主讲人</h3>
+                        <p class="text-gray-400">2022年 Web技术发展大会</p>
+                        <p class="text-gray-400">主题：《现代Web开发的未来趋势》</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold">技术研讨会组织者</h3>
+                        <p class="text-gray-400">2021年 分布式系统研讨</p>
+                        <p class="text-gray-400">组织并主持了为期两天的技术研讨活动</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <h3 class="text-lg font-semibold">联系方式</h3>
+                    <p class="text-gray-400">邮箱：wengcaien@tongji.edu.cn</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/LeeOngCai" class="text-gray-400 hover:text-white" target="_blank">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单脚本
+    </script>
+</body>
+</html> 

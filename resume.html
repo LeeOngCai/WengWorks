@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历 - 翁才恩的个人网站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .menu-hidden { display: none; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-gray-800 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-xl font-bold">翁才恩的个人网站</a>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menuButton" class="md:hidden p-2">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+
+                <!-- 桌面端导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-blue-400 transition-colors">首页</a>
+                    <a href="resume.html" class="hover:text-blue-400 transition-colors">简历</a>
+                    <a href="achievements.html" class="hover:text-blue-400 transition-colors">成就</a>
+                    <a href="projects.html" class="hover:text-blue-400 transition-colors">项目</a>
+                    <a href="github.html" class="hover:text-blue-400 transition-colors">GitHub</a>
+                </div>
+            </div>
+
+            <!-- 移动端导航菜单 -->
+            <div id="mobileMenu" class="menu-hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">首页</a>
+                    <a href="resume.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">简历</a>
+                    <a href="achievements.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">成就</a>
+                    <a href="projects.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">项目</a>
+                    <a href="github.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold mb-8 text-center">个人简历</h1>
+            
+            <!-- 教育背景 -->
+            <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">教育背景</h2>
+                <div class="space-y-4">
+                    <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
+                        <h3 class="text-xl font-semibold">交通运输工程 博士在读</h3>
+                        <p class="text-gray-400">同济大学 | 2021-至今</p>
+                        <p class="text-gray-400">• GPA: 3.8/4.0</p>
+                        <p class="text-gray-400">• 研究方向：传感器数据处理、传感器信息融合、3D目标检测、点云增强</p>
+                        <p class="text-gray-400">• 主修课程：智能交通系统、深度学习、计算机视觉、高级传感器技术</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 研究经历 -->
+            <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">研究经历</h2>
+                <div class="space-y-6">
+                    <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
+                        <h3 class="text-xl font-semibold">智能传感器与信息处理实验室</h3>
+                        <p class="text-gray-400">同济大学 | 2021.9-至今</p>
+                        <ul class="list-disc list-inside text-gray-400 mt-2">
+                            <li>开发了基于深度学习的激光雷达点云增强算法，提升点云质量</li>
+                            <li>设计了多传感器融合框架，集成4D毫米波雷达、激光雷达和视觉数据</li>
+                            <li>实现了高精度的3D目标检测系统，在KITTI数据集上取得优异成果</li>
+                            <li>发表多篇高水平学术论文，获得国际会议最佳论文奖</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 技术专长 -->
+            <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">技术专长</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">编程语言与框架</h3>
+                        <ul class="list-disc list-inside text-gray-400">
+                            <li>Python, C++</li>
+                            <li>PyTorch, TensorFlow</li>
+                            <li>OpenCV, PCL</li>
+                            <li>ROS, Linux</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">研究技能</h3>
+                        <ul class="list-disc list-inside text-gray-400">
+                            <li>深度学习算法设计与优化</li>
+                            <li>点云处理与增强</li>
+                            <li>多传感器数据融合</li>
+                            <li>3D目标检测与跟踪</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 证书与认证 -->
+            <section class="bg-gray-800 rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">证书与认证</h2>
+                <ul class="list-disc list-inside text-gray-400">
+                    <li>国家奖学金 (2023)</li>
+                    <li>同济大学优秀博士生 (2022)</li>
+                    <li>ITSC国际会议最佳论文奖 (2023)</li>
+                    <li>同济大学交通运输工程学院学术创新奖 (2022)</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <h3 class="text-lg font-semibold">联系方式</h3>
+                    <p class="text-gray-400">邮箱：wengcaien@tongji.edu.cn</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/LeeOngCai" class="text-gray-400 hover:text-white" target="_blank">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单脚本与首页相同
+    </script>
+</body>
+</html> 
