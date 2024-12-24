@@ -10,6 +10,7 @@
             display: none;
         }
     </style>
+    <script src="js/shared-data.js"></script>
     <script>
         // 检查登录状态
         if (localStorage.getItem('requirePassword') !== 'false' && 
@@ -102,6 +103,35 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 热门内容展示区 -->
+            <div class="mt-12">
+                <h2 class="text-3xl font-bold mb-8 text-center">热门内容</h2>
+                
+                <!-- 内容切换按钮 -->
+                <div class="flex justify-center mb-8 space-x-4">
+                    <button onclick="showContent('achievements')" 
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white 
+                                   transition-colors duration-200">
+                        成就
+                    </button>
+                    <button onclick="showContent('projects')" 
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white 
+                                   transition-colors duration-200">
+                        项目
+                    </button>
+                    <button onclick="showContent('github')" 
+                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white 
+                                   transition-colors duration-200">
+                         GitHub
+                    </button>
+                </div>
+                
+                <!-- 动态内容显示区域 -->
+                <div id="dynamicContent" class="grid md:grid-cols-2 gap-6">
+                    <!-- 内容将通过JavaScript动态插入 -->
+                </div>
+            </div>
         </div>
     </main>
 
@@ -111,7 +141,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="text-center md:text-left mb-4 md:mb-0">
                     <h3 class="text-lg font-semibold">联系方式</h3>
-                    <p class="text-gray-400">邮箱：wengcaien@tongji.edu.cn</p>
+                    <p class="text-gray-400">��箱：wengcaien@tongji.edu.cn</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="https://github.com/LeeOngCai" class="text-gray-400 hover:text-white" target="_blank">
@@ -143,6 +173,63 @@
                 mobileMenu.classList.add('menu-hidden');
             }
         });
+
+        // 显示动态内容
+        function showContent(type) {
+            const contentContainer = document.getElementById('dynamicContent');
+            contentContainer.innerHTML = ''; // 清空现有内容
+            
+            const hotContent = JSON.parse(localStorage.getItem('hotContent') || '{}');
+            const hotItems = hotContent[type] || [];
+            
+            hotItems.forEach(hotItem => {
+                const item = pageContent[type].find(i => i.id === hotItem.id);
+                if (!item) return;
+                
+                const contentItem = document.createElement('div');
+                contentItem.className = 'bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer';
+                contentItem.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-xl font-semibold text-blue-400">${item.title}</h3>
+                        <span class="bg-blue-600 text-sm px-2 py-1 rounded-full">
+                            ${hotItem.count} 次访问
+                        </span>
+                    </div>
+                    <p class="text-gray-400 mt-3">${item.description}</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-sm text-gray-500">
+                            ${type === 'achievements' ? '学术成就' : 
+                              type === 'projects' ? '项目经验' : 'GitHub仓库'}
+                        </span>
+                        <a href="${type}.html" class="text-blue-400 hover:text-blue-300 text-sm">
+                            查看更多 →
+                        </a>
+                    </div>
+                `;
+               
+                // 添加点击事件，记录访问次数
+                contentItem.addEventListener('click', () => {
+                    incrementVisitCount(type, item.id);
+                });
+               
+                contentContainer.appendChild(contentItem);
+            });
+           
+            // 如果没有访问记录，显示默认内容
+            if (hotItems.length === 0) {
+                contentContainer.innerHTML = `
+                    <div class="col-span-2 text-center py-8 bg-gray-800 rounded-lg">
+                        <p class="text-gray-400">暂无访问记录，快去查看${
+                            type === 'achievements' ? '成就' : 
+                            type === 'projects' ? '项目' : 'GitHub'
+                        }页面吧！</p>
+                    </div>
+                `;
+            }
+        }
+
+        // 默认显示成就内容
+        showContent('achievements');
     </script>
 </body>
 </html> 
