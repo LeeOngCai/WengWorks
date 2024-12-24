@@ -198,7 +198,16 @@
     </footer>
 
     <script>
-        // 移动端菜单脚本
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuButton.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('menu-hidden')) {
+                mobileMenu.classList.remove('menu-hidden');
+            } else {
+                mobileMenu.classList.add('menu-hidden');
+            }
+        });
     </script>
 </body>
 </html> 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>简历 - 翁才恩的个人网站</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         .menu-hidden { display: none; }
     </style>
@@ -48,74 +49,86 @@
 
     <main class="container mx-auto px-4 py-8">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold mb-8 text-center">个人简历</h1>
-            
-            <!-- 教育背景 -->
-            <section class="bg-gray-800 rounded-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4 text-blue-400">教育背景</h2>
-                <div class="space-y-4">
-                    <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
-                        <h3 class="text-xl font-semibold">交通运输工程 博士在读</h3>
-                        <p class="text-gray-400">同济大学 | 2021-至今</p>
-                        <p class="text-gray-400">• GPA: 3.8/4.0</p>
-                        <p class="text-gray-400">• 研究方向：传感器数据处理、传感器信息融合、3D目标检测、点云增强</p>
-                        <p class="text-gray-400">• 主修课程：智能交通系统、深度学习、计算机视觉、高级传感器技术</p>
-                    </div>
-                </div>
-            </section>
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-4xl font-bold text-center">个人简历</h1>
+                <button onclick="generatePDF()" 
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    导出PDF
+                </button>
+            </div>
 
-            <!-- 研究经历 -->
-            <section class="bg-gray-800 rounded-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4 text-blue-400">研究经历</h2>
-                <div class="space-y-6">
-                    <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
-                        <h3 class="text-xl font-semibold">智能传感器与信息处理实验室</h3>
-                        <p class="text-gray-400">同济大学 | 2021.9-至今</p>
-                        <ul class="list-disc list-inside text-gray-400 mt-2">
-                            <li>开发了基于深度学习的激光雷达点云增强算法，提升点云质量</li>
-                            <li>设计了多传感器融合框架，集成4D毫米波雷达、激光雷达和视觉数据</li>
-                            <li>实现了高精度的3D目标检测系统，在KITTI数据集上取得优异成果</li>
-                            <li>发表多篇高水平学术论文，获得国际会议最佳论文奖</li>
-                        </ul>
+            <div id="resume-content">
+                <!-- 教育背景 -->
+                <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-400">教育背景</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
+                            <h3 class="text-xl font-semibold">交通运输工程 博士在读</h3>
+                            <p class="text-gray-400">同济大学 | 2021-至今</p>
+                            <p class="text-gray-400">• GPA: 3.8/4.0</p>
+                            <p class="text-gray-400">• 研究方向：传感器数据处理、传感器信息融合、3D目标检测、点云增强</p>
+                            <p class="text-gray-400">• 主修课程：智能交通系统、深度学习、计算机视觉、高级传感器技术</p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- 技术专长 -->
-            <section class="bg-gray-800 rounded-lg p-6 mb-8">
-                <h2 class="text-2xl font-bold mb-4 text-blue-400">技术专长</h2>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">编程语言与框架</h3>
-                        <ul class="list-disc list-inside text-gray-400">
-                            <li>Python, C++</li>
-                            <li>PyTorch, TensorFlow</li>
-                            <li>OpenCV, PCL</li>
-                            <li>ROS, Linux</li>
-                        </ul>
+                <!-- 研究经历 -->
+                <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-400">研究经历</h2>
+                    <div class="space-y-6">
+                        <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
+                            <h3 class="text-xl font-semibold">智能传感器与信息处理实验室</h3>
+                            <p class="text-gray-400">同济大学 | 2021.9-至今</p>
+                            <ul class="list-disc list-inside text-gray-400 mt-2">
+                                <li>开发了基于深度学习的激光雷达点云增强算法，提升点云质量</li>
+                                <li>设计了多传感器融合框架，集成4D毫米波雷达、激光雷达和视觉数据</li>
+                                <li>实现了高精度的3D目标检测系统，在KITTI数据集上取得优异成果</li>
+                                <li>发表多篇高水平学术论文，获得国际会议最佳论文奖</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">研究技能</h3>
-                        <ul class="list-disc list-inside text-gray-400">
-                            <li>深度学习算法设计与优化</li>
-                            <li>点云处理与增强</li>
-                            <li>多传感器数据融合</li>
-                            <li>3D目标检测与跟踪</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- 证书与认证 -->
-            <section class="bg-gray-800 rounded-lg p-6">
-                <h2 class="text-2xl font-bold mb-4 text-blue-400">证书与认证</h2>
-                <ul class="list-disc list-inside text-gray-400">
-                    <li>国家奖学金 (2023)</li>
-                    <li>同济大学优秀博士生 (2022)</li>
-                    <li>ITSC国际会议最佳论文奖 (2023)</li>
-                    <li>同济大学交通运输工程学院学术创新奖 (2022)</li>
-                </ul>
-            </section>
+                <!-- 技术专长 -->
+                <section class="bg-gray-800 rounded-lg p-6 mb-8">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-400">技术专长</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">编程语言与框架</h3>
+                            <ul class="list-disc list-inside text-gray-400">
+                                <li>Python, C++</li>
+                                <li>PyTorch, TensorFlow</li>
+                                <li>OpenCV, PCL</li>
+                                <li>ROS, Linux</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">研究技能</h3>
+                            <ul class="list-disc list-inside text-gray-400">
+                                <li>深度学习算法设计与优化</li>
+                                <li>点云处理与增强</li>
+                                <li>多传感器数据融合</li>
+                                <li>3D目标检测与跟踪</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 证书与认证 -->
+                <section class="bg-gray-800 rounded-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4 text-blue-400">证书与认证</h2>
+                    <ul class="list-disc list-inside text-gray-400">
+                        <li>国家奖学金 (2023)</li>
+                        <li>同济大学优秀博士生 (2022)</li>
+                        <li>ITSC国际会议最佳论文奖 (2023)</li>
+                        <li>同济大学交通运输工程学院学术创新奖 (2022)</li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </main>
 
@@ -140,7 +153,29 @@
     </footer>
 
     <script>
-        // 移动端菜单脚本与首页相同
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuButton.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('menu-hidden')) {
+                mobileMenu.classList.remove('menu-hidden');
+            } else {
+                mobileMenu.classList.add('menu-hidden');
+            }
+        });
+
+        function generatePDF() {
+            const element = document.getElementById('resume-content');
+            const opt = {
+                margin: 1,
+                filename: '翁才恩的个人简历.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
     </script>
 </body>
 </html> 
