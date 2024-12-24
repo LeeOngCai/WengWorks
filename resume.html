@@ -8,6 +8,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         .menu-hidden { display: none; }
+        /* PDF导出样式 */
+        @media print {
+            .pdf-content {
+                background-color: white !important;
+                color: #1a1a1a !important;
+                padding: 40px !important;
+                font-family: 'Arial', sans-serif !important;
+            }
+            .pdf-content section {
+                background-color: white !important;
+                border: none !important;
+                border-bottom: 1px solid #eaeaea !important;
+                margin-bottom: 2rem !important;
+                padding: 0 !important;
+            }
+            .pdf-content section:last-child {
+                border-bottom: none !important;
+            }
+            .pdf-content h2 {
+                color: #1a1a1a !important;
+                font-size: 1.5rem !important;
+                font-weight: bold !important;
+                margin-bottom: 1rem !important;
+                padding-bottom: 0.5rem !important;
+                border-bottom: 2px solid #2563eb !important;
+            }
+            .pdf-content h3 {
+                color: #2563eb !important;
+                font-size: 1.25rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            .pdf-content p, .pdf-content li {
+                color: #4b5563 !important;
+                line-height: 1.6 !important;
+                margin-bottom: 0.25rem !important;
+            }
+            .pdf-content ul {
+                margin-left: 1rem !important;
+            }
+            .pdf-content li {
+                margin-bottom: 0.5rem !important;
+            }
+            .pdf-content .hover\:bg-gray-700 {
+                background-color: white !important;
+                padding: 1rem 0 !important;
+            }
+            .pdf-content .grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 2rem !important;
+            }
+            /* 隐藏不需要打印的元素 */
+            .pdf-content button,
+            .pdf-content .cursor-pointer,
+            .pdf-content .hover\:bg-gray-600 {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
@@ -66,7 +125,7 @@
                 <section class="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 class="text-2xl font-bold mb-4 text-blue-400">教育背景</h2>
                     <div class="space-y-4">
-                        <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
+                        <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">
                             <h3 class="text-xl font-semibold">交通运输工程 博士在读</h3>
                             <p class="text-gray-400">同济大学 | 2021-至今</p>
                             <p class="text-gray-400">• GPA: 3.8/4.0</p>
@@ -80,7 +139,7 @@
                 <section class="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 class="text-2xl font-bold mb-4 text-blue-400">研究经历</h2>
                     <div class="space-y-6">
-                        <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200 cursor-pointer">
+                        <div class="p-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">
                             <h3 class="text-xl font-semibold">智能传感器与信息处理实验室</h3>
                             <p class="text-gray-400">同济大学 | 2021.9-至今</p>
                             <ul class="list-disc list-inside text-gray-400 mt-2">
@@ -166,15 +225,34 @@
 
         function generatePDF() {
             const element = document.getElementById('resume-content');
+            element.classList.add('pdf-content');
+            
             const opt = {
-                margin: 1,
+                margin: [0.5, 0.5, 0.5, 0.5],
                 filename: '翁才恩的个人简历.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true,
+                    logging: false
+                },
+                jsPDF: { 
+                    unit: 'in', 
+                    format: 'a4', 
+                    orientation: 'portrait',
+                    compress: true,
+                    precision: 16
+                },
+                pagebreak: { 
+                    mode: 'avoid-all',
+                    before: '.page-break'
+                }
             };
 
-            html2pdf().set(opt).from(element).save();
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.classList.remove('pdf-content');
+            });
         }
     </script>
 </body>
