@@ -10,6 +10,13 @@
             display: none;
         }
     </style>
+    <script>
+        // 检查登录状态
+        if (localStorage.getItem('requirePassword') !== 'false' && 
+            localStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen">
     <!-- 导航栏 -->
@@ -32,6 +39,9 @@
                     <a href="achievements.html" class="hover:text-blue-400 transition-colors">成就</a>
                     <a href="projects.html" class="hover:text-blue-400 transition-colors">项目</a>
                     <a href="github.html" class="hover:text-blue-400 transition-colors">GitHub</a>
+                    <a href="password-manager.html" class="hover:text-yellow-400 transition-colors">密码管理</a>
+                    <button onclick="logout()" 
+                            class="hover:text-red-400 transition-colors">退出登录</button>
                 </div>
             </div>
 
@@ -43,6 +53,10 @@
                     <a href="achievements.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">成就</a>
                     <a href="projects.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">项目</a>
                     <a href="github.html" class="block px-3 py-2 hover:bg-gray-700 rounded-md">GitHub</a>
+                    <button onclick="logout()" 
+                            class="block w-full text-left px-3 py-2 hover:bg-gray-700 rounded-md text-red-400">
+                        退出登录
+                    </button>
                 </div>
             </div>
         </div>
@@ -112,6 +126,12 @@
     </footer>
 
     <script>
+        // 退出登录函数
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html';
+        }
+
         // 移动端菜单切换
         const menuButton = document.getElementById('menuButton');
         const mobileMenu = document.getElementById('mobileMenu');
